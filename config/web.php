@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'sisapp',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -14,7 +14,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'hjehe981h9e81298e912h97gf29789ed9712yew978',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,14 +42,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'relatorio' => [
+            'class' => 'app\components\Relatorio',
+            'formatoDefault' => 'xlsx'
+        ]
     ],
     'params' => $params,
 ];

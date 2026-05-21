@@ -98,6 +98,18 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    public function actionNovaPagina()
+    {
+        $nome4 = 'Carlos';
+
+        return $this->render('minha_pagina', [
+            'nome1' => 'João',
+            'nome2' => 'Maria',
+            'nome3' => 'Pedro',
+            'nome4' => $nome4,
+        ]);
+    }
+
     /**
      * Displays contact page.
      *

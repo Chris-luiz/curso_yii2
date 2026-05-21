@@ -1,9 +1,41 @@
-version: '2'
 services:
-  php:
-    image: yiisoftware/yii2-php:7.4-apache
-    volumes:
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      - ./:/app:delegated
+  db:
+    image: mysql:8.0
+    container_name: mysql_server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meu_banco
     ports:
-      - '8000:80'
+      - "3306:3306"
+    networks:
+      app_network:
+        ipv4_address: 172.20.0.10
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pma_server
+    restart: always
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    networks:
+      - app_network
+    depends_on:
+      - db
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  db_data:
