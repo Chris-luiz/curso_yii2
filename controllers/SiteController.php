@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use DateTime;
 
 class SiteController extends Controller
 {
@@ -70,7 +71,22 @@ class SiteController extends Controller
         echo \Yii::getAlias("@app") . '<br>';
         echo \Yii::getAlias("@controllers") . '<br>';
 
-        
+        echo \Yii::$app->params['MAX_SIZE'] . '<br>';
+
+
+        echo \Yii::$app->language . '<br>';
+        echo \Yii::$app->sourceLanguage . '<br>';
+        echo \Yii::$app->timeZone . '<br>';
+
+        echo (new DateTime())->format('H:i:s') . '<br>';
+
+        echo \Yii::$app->charset . '<br>';
+        echo \Yii::$app->defaultRoute . '<br>';
+        echo \Yii::$app->layout . '<br>';
+        echo \Yii::$app->layoutPath . '<br>';
+        echo \Yii::$app->runtimePath . '<br>';
+
+
         // $path = \Yii::$app->basePath . '/asse
         // echo \Yii::getAlias("@npm") . '<br>';ts/imagens/jpg';
         // echo $path;

@@ -23,6 +23,19 @@ $config = [
     //     'site' => 'app\controllers\PostController'
     // ],
     // 'controllerNamespace' => 'app\http\controllers',
+    'language' => 'pt_BR',
+    'sourceLanguage' => 'pt_BR',
+    'name' => 'Meu App',
+    'timeZone' => 'America/Manaus',
+    'version' => '2.0.2',
+    'charset' => 'UTF-8',
+    'defaultRoute' => 'pessoa',
+    'layout' => 'main',
+    'layoutPath' => '@app/views/layouts',
+    'runtimePath' => '@app/runtime',
+    'viewPath' => '@app/views',
+    'vendorPath' => '@app/vendor',
+    // 'enableCoreCommands' => '',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
