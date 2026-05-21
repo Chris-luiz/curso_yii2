@@ -4,13 +4,25 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'sisapp',
+    'id' => 'meu_segundo_sistema',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        // 'app\bootstrap\ExemploBootstrap'
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@assetsJPG' => '@app/web/assets/imgs/jpg',
+        '@controllers' => '@app/controllers',
     ],
+    // 'catchAll' => [
+    //     'site/offline',
+    // ],
+    // 'controllerMap' => [
+    //     'site' => 'app\controllers\PostController'
+    // ],
+    // 'controllerNamespace' => 'app\http\controllers',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -48,15 +60,13 @@ $config = [
             'rules' => [
             ],
         ],
-        'relatorio' => [
-            'class' => 'app\components\Relatorio',
-            'formatoDefault' => 'xlsx'
-        ]
     ],
     'params' => $params,
 ];
 
 if (YII_ENV_DEV) {
+
+    $config['bootstrap'][] = 'app\bootstrap\ExemploBootstrap';
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
