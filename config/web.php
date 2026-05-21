@@ -70,11 +70,24 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
     ],
     'params' => $params,
+    'on beforeRequest' => function ($event) {
+        echo '<pre>';
+        var_dump($event);
+        echo 'Este evento foi disparado antes da requisição' . '<br>';
+    },
+    'on afterRequest' => function ($event) {
+        echo 'Este evento foi disparado depois da requisição' . '<br>';
+    },
+    'on beforeAction' => function ($event) {
+        echo 'Este evento foi disparado antes da ação' . '<br>';
+    },
+    'on afterAction' => function ($event) {
+        echo 'Este evento foi disparado depois da ação' . '<br>';
+    }
 ];
 
 if (YII_ENV_DEV) {
